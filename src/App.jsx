@@ -1,11 +1,12 @@
 import "./App.css";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <>
-      <h1 className="text-center p-4 bg-green-800 text-white text-3xl">
-        First React Project
-      </h1>
+      <main className="w-full relative overflow-x-hidden max-w-[1440px] mx-auto px-4">
+        <Navbar />
+      </main>
     </>
   );
 }
