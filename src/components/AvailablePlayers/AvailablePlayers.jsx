@@ -14,6 +14,7 @@ const AvailablePlayers = ({ playersPromise }) => {
         >
           <div className="">
             <img
+              loading="lazy"
               className="w-full h-60 object-cover rounded-2xl"
               src={player.playerImage}
               alt="Player"
