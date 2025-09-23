@@ -6,7 +6,7 @@ const AvailablePlayers = ({ playersPromise }) => {
   const playersData = use(playersPromise);
 
   return (
-    <div className="w-full grid grid-cols-3 gap-6">
+    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {playersData.map((player, index) => (
         <div
           key={index}
@@ -30,7 +30,7 @@ const AvailablePlayers = ({ playersPromise }) => {
             </h3>
           </div>
 
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row items-start sm:items-center justify-start sm:justify-between mt-4">
             <div className="flex items-center gap-3">
               <div className="">
                 <img src={iconReport} alt="Report Icon" />
@@ -50,14 +50,14 @@ const AvailablePlayers = ({ playersPromise }) => {
           <hr className="border border-neutral-900/10 my-4" />
 
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-between">
               <h4 className="text-neutral-900 text-base font-bold">Rating</h4>
               <span className="text-neutral-900/70 text-base font-normal">
                 {player.rating}
               </span>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-between">
               <h4 className="text-neutral-900 text-base font-bold">
                 {player.batingStyle}
               </h4>
@@ -66,7 +66,7 @@ const AvailablePlayers = ({ playersPromise }) => {
               </span>
             </div>
 
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-start sm:justify-between">
               <h4 className="text-neutral-900 text-base font-bold">
                 Price: ${player.price}
               </h4>

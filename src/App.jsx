@@ -27,7 +27,7 @@ function App() {
         <Navbar />
 
         {/* avilable players toogle */}
-        <div className="flex items-center justify-between mt-6 mb-8">
+        <div className="flex flex-col gap-5 sm:flex-row sm:gap-0 items-center justify-between mt-6 mb-8">
           <h1 className="text-neutral-900 text-3xl font-bold">
             Available Players
           </h1>
