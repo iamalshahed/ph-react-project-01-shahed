@@ -1,12 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import iconUser from "./../../assets/icon__user.png";
 import iconReport from "./../../assets/repottIcon.png";
 
 const PlayerCard = ({ player }) => {
+  const [isSelected, setIsSelected] = useState(false);
+
   return (
-    <div
-      className="p-6 rounded-2xl outline outline-offset-[-1px] outline-neutral-900/10"
-    >
+    <div className="p-6 rounded-2xl outline outline-offset-[-1px] outline-neutral-900/10">
       <div className="">
         <img
           loading="lazy"
@@ -66,8 +66,12 @@ const PlayerCard = ({ player }) => {
             Price: ${player.price}
           </h4>
           <div className="">
-            <button className="px-4 py-2 rounded-lg outline outline-offset-[-1px] outline-neutral-900/10 text-neutral-900 text-sm font-normal cursor-pointer transition-all duration-150 hover:bg-neutral-900/10">
-              Choose Player
+            <button
+              disabled={isSelected}
+              onClick={() => setIsSelected(true)}
+              className="px-4 py-2 rounded-lg outline outline-offset-[-1px] outline-neutral-900/10 text-neutral-900 text-sm font-normal cursor-pointer transition-all duration-150 hover:bg-neutral-900/10 disabled:text-neutral-400 disabled:hover:bg-gray-200 disabled:cursor-not-allowed"
+            >
+              {isSelected ? "Selected" : "Choose Player"}
             </button>
           </div>
         </div>
