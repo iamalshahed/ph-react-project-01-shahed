@@ -9,8 +9,8 @@ const SelectedCards = ({ player, removePlayer }) => {
 
   return (
     <div className="p-6 rounded-2xl border border-neutral-900/10">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-6">
+      <div className="flex flex-col sm:flex-row items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-center gap-6">
           <div className="">
             <img
               className="w-20 h-20 object-cover rounded-2xl"
@@ -27,7 +27,7 @@ const SelectedCards = ({ player, removePlayer }) => {
             </p>
           </div>
         </div>
-        <button className="" onClick={handleRevomePlayer}>
+        <button className="mt-4 sm:mt-0" onClick={handleRevomePlayer}>
           <img src={iconDelete} alt="Delete" />
         </button>
       </div>
