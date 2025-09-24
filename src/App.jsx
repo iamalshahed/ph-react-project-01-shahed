@@ -13,18 +13,19 @@ const fetchPlayers = async () => {
   return res.json();
 };
 
+/**
+ * call the function on a variable and set this variable with props to <AvailablePlayers /> component
+ */
+const playersPromise = fetchPlayers();
+
 function App() {
   const [toogle, setToogle] = useState(true);
-
-  /**
-   * call the function on a variable and set this variable with props to <AvailablePlayers /> component
-   */
-  const playersPromise = fetchPlayers();
+  const [availableBalance, setAvailableBalance] = useState(1000000);
 
   return (
     <>
       <main className="w-full relative overflow-x-hidden max-w-[1440px] mx-auto px-4">
-        <Navbar />
+        <Navbar availableBalance={availableBalance} />
 
         {/* avilable players toogle */}
         <div className="flex flex-col gap-5 sm:flex-row sm:gap-0 items-center justify-between mt-6 mb-8">
@@ -53,7 +54,11 @@ function App() {
 
         {toogle ? (
           <Suspense fallback={<Preloader />}>
-            <AvailablePlayers playersPromise={playersPromise} />
+            <AvailablePlayers
+              availableBalance={availableBalance}
+              setAvailableBalance={setAvailableBalance}
+              playersPromise={playersPromise}
+            />
           </Suspense>
         ) : (
           <Suspense fallback={<Preloader />}>

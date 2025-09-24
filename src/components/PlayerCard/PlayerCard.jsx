@@ -2,8 +2,17 @@ import React, { useState } from "react";
 import iconUser from "./../../assets/icon__user.png";
 import iconReport from "./../../assets/repottIcon.png";
 
-const PlayerCard = ({ player }) => {
+const PlayerCard = ({ player, setAvailableBalance, availableBalance }) => {
   const [isSelected, setIsSelected] = useState(false);
+  const handleSelected = (playerData) => {
+    const playerPrice = parseInt(playerData.price.split(",").join(""));
+    if (availableBalance < playerPrice) {
+      alert(`Not enought coins!`);
+      return;
+    }
+    setIsSelected(true);
+    setAvailableBalance(availableBalance - playerPrice);
+  };
 
   return (
     <div className="p-6 rounded-2xl outline outline-offset-[-1px] outline-neutral-900/10">
@@ -68,7 +77,9 @@ const PlayerCard = ({ player }) => {
           <div className="">
             <button
               disabled={isSelected}
-              onClick={() => setIsSelected(true)}
+              onClick={() => {
+                handleSelected(player);
+              }}
               className="px-4 py-2 rounded-lg outline outline-offset-[-1px] outline-neutral-900/10 text-neutral-900 text-sm font-normal cursor-pointer transition-all duration-150 hover:bg-neutral-900/10 disabled:text-neutral-400 disabled:hover:bg-gray-200 disabled:cursor-not-allowed"
             >
               {isSelected ? "Selected" : "Choose Player"}
