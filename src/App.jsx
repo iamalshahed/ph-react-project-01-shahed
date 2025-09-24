@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar/Navbar";
 import AvailablePlayers from "./components/AvailablePlayers/AvailablePlayers";
 import Preloader from "./components/Common/Preloader";
 import SelectedPlayers from "./components/SelectedPlayers/SelectedPlayers";
+import { ToastContainer } from "react-toastify";
 
 /**
  * fetch players data from playersData.json file
@@ -20,7 +21,7 @@ const playersPromise = fetchPlayers();
 
 function App() {
   const [toogle, setToogle] = useState(true);
-  const [availableBalance, setAvailableBalance] = useState(1000000);
+  const [availableBalance, setAvailableBalance] = useState(6000000000);
   const [purchasedPlayers, setPurchasedPlayers] = useState([]);
 
   const removePlayer = (p) => {
@@ -84,6 +85,8 @@ function App() {
           </Suspense>
         )}
       </main>
+      {/* Tost */}
+      <ToastContainer />
     </>
   );
 }

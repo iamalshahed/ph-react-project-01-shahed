@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import iconUser from "./../../assets/icon__user.png";
 import iconReport from "./../../assets/repottIcon.png";
+import { toast } from "react-toastify";
 
 const PlayerCard = ({
   player,
@@ -13,12 +14,17 @@ const PlayerCard = ({
   const handleSelected = (playerData) => {
     const playerPrice = parseInt(playerData.price.split(",").join(""));
     if (availableBalance < playerPrice) {
-      alert(`Not enought coins!`);
+      toast(`Not enought coins!`);
+      return;
+    }
+    if (purchasedPlayers.length >= 6) {
+      toast("6 players alrady added!");
       return;
     }
     setIsSelected(true);
     setAvailableBalance(availableBalance - playerPrice);
     setPurchasedPlayers([...purchasedPlayers, playerData]);
+    toast(`${playerData.playerName} added!`);
   };
 
   return (
