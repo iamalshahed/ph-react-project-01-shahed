@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import iconUser from "./../../assets/icon__user.png";
 import iconReport from "./../../assets/repottIcon.png";
 
-const PlayerCard = ({ player, setAvailableBalance, availableBalance }) => {
+const PlayerCard = ({
+  player,
+  setAvailableBalance,
+  availableBalance,
+  purchasedPlayers,
+  setPurchasedPlayers,
+}) => {
   const [isSelected, setIsSelected] = useState(false);
   const handleSelected = (playerData) => {
     const playerPrice = parseInt(playerData.price.split(",").join(""));
@@ -12,6 +18,7 @@ const PlayerCard = ({ player, setAvailableBalance, availableBalance }) => {
     }
     setIsSelected(true);
     setAvailableBalance(availableBalance - playerPrice);
+    setPurchasedPlayers([...purchasedPlayers, playerData]);
   };
 
   return (
