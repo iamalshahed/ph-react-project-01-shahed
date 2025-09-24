@@ -23,6 +23,16 @@ function App() {
   const [availableBalance, setAvailableBalance] = useState(1000000);
   const [purchasedPlayers, setPurchasedPlayers] = useState([]);
 
+  const removePlayer = (p) => {
+    const filteredPlayer = purchasedPlayers.filter(
+      (plyr) => plyr.playerName !== p.playerName
+    );
+    setPurchasedPlayers(filteredPlayer);
+    setAvailableBalance(
+      availableBalance + parseInt(p.price.split(",").join(""))
+    );
+  };
+
   return (
     <>
       <main className="w-full relative overflow-x-hidden max-w-[1440px] mx-auto px-4">
@@ -31,7 +41,9 @@ function App() {
         {/* avilable players toogle */}
         <div className="flex flex-col gap-5 sm:flex-row sm:gap-0 items-center justify-between mt-6 mb-8">
           <h1 className="text-neutral-900 text-3xl font-bold">
-            Available Players
+            {toogle
+              ? "Available Players"
+              : `Selected Player (${purchasedPlayers.length}/6)`}
           </h1>
           <div className="flex items-center">
             <button
@@ -48,7 +60,7 @@ function App() {
                 toogle || "active"
               }`}
             >
-              Selected <span>(0)</span>
+              Selected <span>({purchasedPlayers.length})</span>
             </button>
           </div>
         </div>
@@ -65,7 +77,10 @@ function App() {
           </Suspense>
         ) : (
           <Suspense fallback={<Preloader />}>
-            <SelectedPlayers purchasedPlayers={purchasedPlayers} />
+            <SelectedPlayers
+              removePlayer={removePlayer}
+              purchasedPlayers={purchasedPlayers}
+            />
           </Suspense>
         )}
       </main>

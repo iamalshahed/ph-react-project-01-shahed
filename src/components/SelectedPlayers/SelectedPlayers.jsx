@@ -1,11 +1,16 @@
 import React from "react";
+import SelectedCards from "../SelectedCards/SelectedCards";
 
-const SelectedPlayers = ({ purchasedPlayers }) => {
-  console.log(purchasedPlayers);
-
+const SelectedPlayers = ({ purchasedPlayers, removePlayer }) => {
   return (
-    <div>
-      <h1 className="text-3xl text-center my-5">Selected Players</h1>
+    <div className="space-y-6">
+      {purchasedPlayers.map((player, index) => (
+        <SelectedCards
+          removePlayer={removePlayer}
+          key={index}
+          player={player}
+        />
+      ))}
     </div>
   );
 };
